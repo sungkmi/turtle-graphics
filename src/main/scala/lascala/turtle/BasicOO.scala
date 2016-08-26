@@ -49,5 +49,15 @@ object BasicOO extends App {
     turtle turn 120.0.degree
   }
 
-  drawTriangle(log)
+  def drawPolygon(n: Int)(log: String => Unit): Unit = {
+    val angle = (360.0 / n).degree
+    val turtle = new Turtle(log)
+    def drawOneSide(): Unit = {
+      turtle move 100.0
+      turtle turn angle
+    }
+    for (i <- 1 to n) drawOneSide()
+  }
+
+  drawPolygon(6)(log)
 }
