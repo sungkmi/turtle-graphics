@@ -21,5 +21,19 @@ object BasicOOTest extends TestSuite {
 
       assert((turtle.currentAngle.degree - 90.0).abs < 0.000001)
     }
+
+    'Pen {
+      val turtle = new Turtle(println)
+      turtle.penUp()
+      assert(turtle.currentPenState == PenState.Up)
+      turtle.penDown()
+      assert(turtle.currentPenState == PenState.Down)
+    }
+
+    'SetColor {
+      val turtle = new Turtle(println)
+      turtle.setColor(PenColor.Blue)
+      assert(turtle.currentColor == PenColor.Blue)
+    }
   }
 }

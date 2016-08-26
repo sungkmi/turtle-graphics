@@ -20,5 +20,20 @@ object BasicOO {
       log(f"Turn ${angle.degree}%.1f")
       currentAngle = (currentAngle.degree + angle.degree).degree
     }
+
+    def penUp() = {
+      log(f"Pen Up")
+      currentPenState = PenState.Up
+    }
+
+    def penDown() = {
+      log(f"Pen Down")
+      currentPenState = PenState.Down
+    }
+
+    def setColor(color: PenColor) = {
+      log(f"SetColor $color")
+      currentColor = color
+    }
   }
 }
