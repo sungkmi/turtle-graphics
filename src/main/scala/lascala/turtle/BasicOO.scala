@@ -3,7 +3,7 @@ package lascala.turtle
 import lascala.turtle.common._
 
 object BasicOO extends App {
-  class Turtle(log: String => Unit) {
+  class Turtle(log: Log) {
     var currentPosition: Position = initialPosition
     var currentAngle: Angle = 0.0.degree
     var currentColor: PenColor = initialColor
@@ -37,9 +37,9 @@ object BasicOO extends App {
     }
   }
 
-  def log(message: String): Unit = println(message)
+  def log: Log = println
 
-  def drawTriangle(log: String => Unit): Unit = {
+  def drawTriangle(log: Log): Unit = {
     val turtle = new Turtle(log)
     turtle move 100.0
     turtle turn 120.0.degree
@@ -49,7 +49,7 @@ object BasicOO extends App {
     turtle turn 120.0.degree
   }
 
-  def drawPolygon(n: Int)(log: String => Unit): Unit = {
+  def drawPolygon(n: Int)(log: Log): Unit = {
     val angle = (360.0 / n).degree
     val turtle = new Turtle(log)
     def drawOneSide(): Unit = {

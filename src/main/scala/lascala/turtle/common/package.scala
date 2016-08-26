@@ -2,6 +2,8 @@ package lascala.turtle
 
 package object common {
 
+  type Log = String => Unit
+
   type Distance = Double
 
   case class Angle(degree: Double) {
@@ -37,7 +39,7 @@ package object common {
 
   val (initialPosition, initialColor, initialPenState) = (Position(0, 0), PenColor.Black, PenState.Down)
 
-  def dummyDrawLine(log: String => Unit, oldPos: Position, newPos: Position, color: PenColor): Unit =
+  def dummyDrawLine(log: Log, oldPos: Position, newPos: Position, color: PenColor): Unit =
     log(s"...Draw line from $oldPos to $newPos using $color")
 
 }
