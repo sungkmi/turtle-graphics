@@ -35,7 +35,7 @@ package object common {
     def round2: Double =  (math rint d * 100) / 100.0 
   }
 
-  case class Turtle(position: Position, color: PenColor, penState: PenState)
+  val (initialPosition, initialColor, initialPenState) = (Position(0, 0), PenColor.Black, PenState.Down)
 
   def dummyDrawLine(log: String => Unit, oldPos: Position, newPos: Position, color: PenColor): Unit =
     log(s"...Draw line from $oldPos to $newPos using $color")
