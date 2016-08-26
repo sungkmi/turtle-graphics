@@ -35,5 +35,24 @@ object BasicOOTest extends TestSuite {
       turtle.setColor(PenColor.Blue)
       assert(turtle.currentColor == PenColor.Blue)
     }
+
+    'DrawTriangle {
+      var logged = ""
+      def log(s: String): Unit = {
+        logged = logged ++ s ++ "\n"
+      }
+      drawTriangle(log)
+      val expected = """Move 100.0
+...Draw line from (0.0, 0.0) to (100.0, 0.0) using Black
+Turn 120.0
+Move 100.0
+...Draw line from (100.0, 0.0) to (50.0, 86.6) using Black
+Turn 120.0
+Move 100.0
+...Draw line from (50.0, 86.6) to (-0.0, 0.0) using Black
+Turn 120.0
+"""
+      assert(expected == logged)
+    }
   }
 }
