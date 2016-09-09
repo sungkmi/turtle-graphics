@@ -1,5 +1,7 @@
 package lascala.turtle
 
+import scala.util.{Failure, Success, Try}
+
 package object common {
 
   type Distance = Double
@@ -40,4 +42,14 @@ package object common {
   def dummyDrawLine(log: String => Unit, oldPos: Position, newPos: Position, color: PenColor): Unit =
     log(s"...Draw line from $oldPos to $newPos using $color")
 
+  def returnR[A](a: A): Try[A] = Try(a)
+
+  def mapR[A, B](f: A => B): Try[A] => Try[B] = _ map f
+
+  def lift2R[A, B, C](f: A => B => C): Try[A] => Try[B] => Try[C] = {
+    (ta: Try[A]) => (tb: Try[B]) => for {
+      a <- ta
+      b <- tb
+    } yield f(a)(b)
+  }
 }

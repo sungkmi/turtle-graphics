@@ -1,6 +1,6 @@
 package lascala.turtle.common
 
-import lascala.turtle.common._
+import scala.util.{Success, Try}
 
 import utest._
 
@@ -27,6 +27,18 @@ object CommonTest extends TestSuite {
 
     "Position#toString" - {
       assert( Position(0.1, 0.1).toString == "(0.1, 0.1)" )
+    }
+
+    'retunR {
+      assert(returnR("abc") == Try("abc"))
+    }
+
+    'mapR {
+      assert(mapR((x:String) => x.toInt)(Try("10")) == Success(10))
+    }
+
+    'lift2R {
+      assert(lift2R((a: Int) => (b: Int) => a + b)(Try(1))(Try(2)) == Success(3))
     }
   }
 }
